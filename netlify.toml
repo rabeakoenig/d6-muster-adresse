@@ -1,0 +1,5 @@
+# Was Netlify veröffentlicht: der Ordner app/ (die Web-App) und die Funktion in netlify/functions/.
+# Ein Build-Befehl ist nicht nötig. Den API-Schlüssel nie hier eintragen.
+[build]
+  publish = "app"
+  functions = "netlify/functions"

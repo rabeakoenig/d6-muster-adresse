@@ -1,0 +1,25 @@
+:root { --gruen: #2f5d3a; --grau: #4a4a4a; --linie: #c9c3b0; --hell: #f7f3e6; --rot: #9b2d0b; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 18px/1.5 system-ui, sans-serif; background: var(--hell); color: #1c1c1c; }
+header { background: var(--gruen); color: #fff; padding: 20px 16px; }
+header h1 { margin: 0; font-size: 28px; }
+header p { margin: 4px 0 0; }
+main { max-width: 720px; margin: 0 auto; padding: 16px; }
+h2 { font-size: 22px; margin: 20px 0 8px; }
+.formular { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+label { display: block; font-weight: 600; }
+select, input[type="text"] { font: inherit; padding: 10px 12px; border: 2px solid var(--linie); border-radius: 10px; min-height: 48px; background: #fff; display: block; margin-top: 4px; }
+button { font: inherit; font-weight: 700; min-height: 48px; padding: 10px 16px; border-radius: 10px; border: 2px solid var(--gruen); background: var(--gruen); color: #fff; cursor: pointer; }
+button.sek { background: #fff; color: var(--gruen); }
+.hinweis { margin-top: 12px; padding: 12px 14px; border: 2px solid var(--rot); border-radius: 10px; background: #fdece6; color: var(--rot); font-weight: 700; }
+.tag { background: #fff; border: 2px solid var(--linie); border-radius: 12px; padding: 10px 14px; margin-bottom: 10px; }
+.tag h3 { margin: 0 0 4px; font-size: 19px; }
+.tag p { margin: 2px 0; color: var(--grau); }
+#woche { min-width: 640px; }
+@media (max-width: 600px) {
+  main { display: flex; flex-direction: column; }
+  main > * { order: 2; }
+  main > h2:first-child, main > #formular, main > .reset-zeile { order: 1; }
+  #formular { margin: 0; }
+  .reset-zeile { margin: 0; }
+}

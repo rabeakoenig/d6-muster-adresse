@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gassi-Runden Tierheim Birkenhof</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Gassi-Runden</h1>
+    <p>Tierheim Birkenhof (erfundener Fall)</p>
+  </header>
+  <main>
+    <h2>Runde eintragen</h2>
+    <form id="formular" class="formular">
+      <label>Hund <select id="hund"></select></label>
+      <label>Tag <select id="tag"></select></label>
+      <label>Fenster <select id="fenster"></select></label>
+      <label>Kürzel <select id="kuerzel"></select></label>
+      <label>Meine Erfahrung <select id="erfahrung"></select></label>
+      <button type="submit">Runde eintragen</button>
+    </form>
+    <p id="hinweis" class="hinweis" role="alert" hidden></p>
+    <h2>Runden der Woche</h2>
+    <div id="woche"></div>
+    <p class="reset-zeile"><button type="button" id="zuruecksetzen" class="sek">Alles zurücksetzen</button></p>
+    <section id="frage-kasten" class="frage" hidden>
+      <h2>Frag das Tierheim</h2>
+      <p>Eine Frage zu den Hausregeln, zum Beispiel: Wie lang darf eine Runde sein?</p>
+      <input type="text" id="frage" maxlength="300" aria-label="Deine Frage">
+      <button type="button" id="frage-senden">Fragen</button>
+      <p id="antwort"></p>
+    </section>
+  </main>
+  <script src="daten.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
