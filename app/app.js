@@ -58,6 +58,7 @@ function fuelleHunde() {
 }
 
 function pruefe(hund, tag, fenster, kuerzel, erfahrung) {
+  if (tag === "Sonntag") return "Sonntag: Tierheim geschlossen, keine Runden.";
   var gleichesFenster = runden.filter(function (r) { return r.tag === tag && r.fenster === fenster && r.hundId === hund.id; });
   if (gleichesFenster.length > 0) return hund.name + " hat in diesem Fenster schon eine Runde (ein Hund, ein Fenster).";
   var amTag = runden.filter(function (r) { return r.tag === tag && r.kuerzel === kuerzel; });
@@ -103,6 +104,15 @@ function zeichne() {
     });
     woche.appendChild(box);
   });
+  var sonntag = document.createElement("div");
+  sonntag.className = "tag gesperrt";
+  var hs = document.createElement("h3");
+  hs.textContent = "Sonntag";
+  sonntag.appendChild(hs);
+  var ps = document.createElement("p");
+  ps.textContent = "Sonntag: Tierheim geschlossen, keine Runden";
+  sonntag.appendChild(ps);
+  woche.appendChild(sonntag);
 }
 
 function zuruecksetzen() {
@@ -131,6 +141,13 @@ function fragen() {
 }
 
 fuelle("tag", TAGE, function (t) { return t; });
+(function () {
+  var o = document.createElement("option");
+  o.value = "sonntag";
+  o.textContent = "Sonntag (geschlossen)";
+  o.disabled = true;
+  document.getElementById("tag").appendChild(o);
+})();
 fuelle("fenster", FENSTER, function (f) { return f; });
 fuelle("kuerzel", KUERZEL, function (k) { return k; });
 fuelle("erfahrung", STUFEN, function (s) { return s; });

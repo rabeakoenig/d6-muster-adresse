@@ -25,3 +25,4 @@ button.sek { background: #fff; color: var(--gruen); }
 }
 .schalter { display: flex; align-items: center; gap: 8px; }
 .schalter input { width: 22px; height: 22px; }
+.tag.gesperrt { background: #eee; color: var(--grau); }
