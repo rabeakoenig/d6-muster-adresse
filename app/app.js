@@ -40,6 +40,23 @@ function stufenIndex(stufe) {
   return STUFEN.indexOf(stufe);
 }
 
+// Auswahl der Hunde: mit dem Schalter nur die, deren Stufe die Erfahrung nicht übersteigt.
+function fuelleHunde() {
+  var sel = document.getElementById("hund");
+  var nur = document.getElementById("nur-passend").checked;
+  var erfahrung = STUFEN[Number(document.getElementById("erfahrung").value)];
+  var gewaehlt = sel.value;
+  sel.innerHTML = "";
+  HUNDE.forEach(function (h, i) {
+    if (nur && stufenIndex(h.stufe) > stufenIndex(erfahrung)) return;
+    var o = document.createElement("option");
+    o.value = String(i);
+    o.textContent = h.name + " (" + h.stufe + ")";
+    sel.appendChild(o);
+  });
+  if (gewaehlt) sel.value = gewaehlt;
+}
+
 function pruefe(hund, tag, fenster, kuerzel, erfahrung) {
   var gleichesFenster = runden.filter(function (r) { return r.tag === tag && r.fenster === fenster && r.hundId === hund.id; });
   if (gleichesFenster.length > 0) return hund.name + " hat in diesem Fenster schon eine Runde (ein Hund, ein Fenster).";
@@ -113,11 +130,13 @@ function fragen() {
     .catch(function () { ziel.textContent = "Keine Verbindung."; });
 }
 
-fuelle("hund", HUNDE, function (h) { return h.name + " (" + h.stufe + ")"; });
 fuelle("tag", TAGE, function (t) { return t; });
 fuelle("fenster", FENSTER, function (f) { return f; });
 fuelle("kuerzel", KUERZEL, function (k) { return k; });
 fuelle("erfahrung", STUFEN, function (s) { return s; });
+fuelleHunde();
+document.getElementById("erfahrung").addEventListener("change", fuelleHunde);
+document.getElementById("nur-passend").addEventListener("change", fuelleHunde);
 document.getElementById("formular").addEventListener("submit", eintragen);
 document.getElementById("zuruecksetzen").addEventListener("click", zuruecksetzen);
 document.getElementById("frage-senden").addEventListener("click", fragen);
